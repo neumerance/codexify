@@ -8,6 +8,8 @@
   </div>
 </template>
 <script>
+import bibleTranslationMapping from '~/configs/bible_translation_mappings.json';
+
 export default {
   name: 'AppBibleVerse',
   props: {
@@ -39,7 +41,7 @@ export default {
       }
     },
     translationName() {
-      return this.translationCode;
+      return bibleTranslationMapping[this.translationCode];
     },
   }
 }
