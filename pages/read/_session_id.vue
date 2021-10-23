@@ -1,6 +1,6 @@
 <template>
   <div class="read h-screen w-screen">
-    <div v-if="data" class="w-full h-full px-8 py-6">
+    <div v-if="data && !data.not_found" class="w-full h-full px-8 py-6">
       <app-bible-verse
         :book-name="data.book_name"
         :chapter-id="data.chapter_id"
@@ -9,6 +9,10 @@
         :translation-code="data.translation_code"
       >
       </app-bible-verse>
+    </div>
+    <div v-else class="w-full h-full px-8 py-6">
+      <app-bible-verse-not-found>
+      </app-bible-verse-not-found>
     </div>
   </div>
 </template>
