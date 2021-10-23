@@ -4,6 +4,7 @@
     <div class="flex flex-wrap">
       <button
         class="books__buttons mr-2 mb-2"
+        @click="selectBook(abbr)"
         :class="stateClasses(abbr)"
         :key="`book-${key}`"
         v-for="abbr, key in books">
@@ -29,6 +30,9 @@ export default {
       } else {
         return 'bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded'
       }
+    },
+    selectBook(bookAbbr) {
+      this.$store.commit('SET_BOOK_ABBR', bookAbbr);
     }
   }
 }

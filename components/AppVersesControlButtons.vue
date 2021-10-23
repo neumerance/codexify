@@ -4,6 +4,7 @@
     <div class="flex flex-wrap">
       <button
         class="verses__buttons mr-2 mb-2"
+        @click="selectVerse(index)"
         :class="stateClasses(index)"
         :key="`verses-${index}`"
         v-for="index in verseCount">
@@ -32,6 +33,9 @@ export default {
       } else {
         return 'bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded'
       }
+    },
+    selectVerse(verseId) {
+      this.$store.commit('SET_VERSE_ID', verseId);
     }
   }
 }

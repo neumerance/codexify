@@ -6,6 +6,7 @@
         class="translation__buttons mr-2 mb-2"
         :class="stateClasses(translation)"
         :key="`translation-${key}`"
+        @click="selectTranslation(translation)"
         v-for="translation, key in translations">
         {{ translation }}
       </button>
@@ -29,6 +30,9 @@ export default {
       } else {
         return 'bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded'
       }
+    },
+    selectTranslation(translationCode) {
+      this.$store.commit('SET_TRANSLATION_CODE', translationCode);
     }
   }
 }
