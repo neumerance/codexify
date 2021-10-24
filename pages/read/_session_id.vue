@@ -2,9 +2,7 @@
   <div class="read h-screen w-screen">
     <div v-if="data && !data.not_found" class="w-full h-full px-8 py-6">
       <app-bible-verse
-        :book-name="data.book_name"
-        :chapter-id="data.chapter_id"
-        :verse-id="data.verse_id"
+        :title="data.title"
         :scripture="data.content"
         :translation-code="data.translation_code"
       >
