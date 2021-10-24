@@ -1,6 +1,6 @@
 const initialState = () => ({
   translationCode: 'MBBTAG',
-  bookAbbr: 'Gen',
+  bookName: 'Genesis',
   chapterId: 1,
   verseId: 1
 });
@@ -14,10 +14,10 @@ export const mutations = {
   SET_TRANSLATION_CODE(state, translationCode) {
     state.translationCode = translationCode;
   },
-  SET_BOOK_ABBR(state, bookAbbr) {
+  SET_BOOK_NAME(state, bookName) {
     state.chapterId = 1;
     state.verseId = 1;
-    state.bookAbbr = bookAbbr;
+    state.bookName = bookName;
   },
   SET_CHAPTER_ID(state, chapterId) {
     state.verseId = 1;

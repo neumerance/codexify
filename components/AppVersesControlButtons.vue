@@ -20,7 +20,7 @@ export default {
   name: 'AppVersesControlButtons',
   computed: {
     chapters() {
-      return BookChaptersAndVersesMappings.find(book => book.abbr === this.$store.state.bookAbbr).chapters
+      return BookChaptersAndVersesMappings.find(book => book.book === this.$store.state.bookName).chapters
     },
     verseCount() {
       return parseInt(this.chapters.find(chapter => parseInt(chapter.chapter) === this.$store.state.chapterId).verses);

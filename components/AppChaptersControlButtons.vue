@@ -20,7 +20,7 @@ export default {
   name: 'AppChaptersControlButtons',
   computed: {
     chapters() {
-      return BookChaptersAndVersesMappings.find(book => book.abbr === this.$store.state.bookAbbr).chapters
+      return BookChaptersAndVersesMappings.find(book => book.book === this.$store.state.bookName).chapters
     }
   },
   methods: {
