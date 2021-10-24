@@ -15,9 +15,11 @@
 </template>
 <script>
 import BookChaptersAndVersesMappings from '~/configs/book_chapters_and_verses_mappings.json';
+import controlMixin from '~/mixins/controls_mixin.js'
 
 export default {
   name: 'AppChaptersControlButtons',
+  mixins: [controlMixin],
   computed: {
     chapters() {
       return BookChaptersAndVersesMappings.find(book => book.book === this.$store.state.bookName).chapters
@@ -33,6 +35,8 @@ export default {
     },
     selectChapter(chapterId) {
       this.$store.commit('SET_CHAPTER_ID', chapterId);
+
+      this.read();
     }
   }
 }

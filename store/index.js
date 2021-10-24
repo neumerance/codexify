@@ -2,7 +2,8 @@ const initialState = () => ({
   translationCode: 'MBBTAG',
   bookName: 'Genesis',
   chapterId: 1,
-  verseId: 1
+  verseId: 1,
+  sessionId: 11112
 });
 
 export const state = initialState;

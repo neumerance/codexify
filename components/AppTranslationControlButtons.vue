@@ -15,9 +15,11 @@
 </template>
 <script>
 import BibleTranslationMappings from '~/configs/bible_translation_mappings.json';
+import controlMixin from '~/mixins/controls_mixin.js'
 
 export default {
   name: 'AppTranslationControlButtons',
+  mixins: [controlMixin],
   computed: {
     translations() {
       return Object.keys(BibleTranslationMappings)
@@ -33,6 +35,8 @@ export default {
     },
     selectTranslation(translationCode) {
       this.$store.commit('SET_TRANSLATION_CODE', translationCode);
+
+      this.read();
     }
   }
 }
