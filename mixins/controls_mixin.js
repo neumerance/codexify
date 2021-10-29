@@ -6,7 +6,7 @@ export default {
       const { translationCode, bookName, chapterId, verseId } = this.$store.state;
 
       await this.$axios.get(
-        `/api/read/${translationCode}/${bookName}/${chapterId}/${verseId}/${this.sessionToken}`
+        `${process.env.appBaseUrl}/api/read/${translationCode}/${bookName}/${chapterId}/${verseId}/${this.sessionToken}`
       )
     },
   },

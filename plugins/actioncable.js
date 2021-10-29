@@ -4,6 +4,6 @@ import ActionCableVue from 'actioncable-vue';
 Vue.use(ActionCableVue, {
   debug: true,
   debugLevel: 'error',
-  connectionUrl: 'ws://localhost:5000/cable',
+  connectionUrl: `${process.env.codexifyWsBaseUrl}/cable`,
   connectImmediately: true,
 });

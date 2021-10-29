@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -32,6 +34,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -45,6 +48,11 @@ export default {
 
   serverMiddleware: ['~/api/server.js'],
   server: {
-    host: "0.0.0.0"
+    host: '0.0.0.0'
+  },
+  env: {
+    codexifyApiBaseUrl: process.env.CODEXIFY_API_BASE_URL || 'http://localhost:5000',
+    codexifyWsBaseUrl: process.env.CODEXIFY_WS_BASE_URL || 'ws://localhost:5000',
+    appBaseUrl: process.env.APP_BASE_URL || 'http://localhost:3000'
   }
 }

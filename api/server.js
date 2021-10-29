@@ -30,7 +30,7 @@ app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token
   } = req.params;
   console.log('sessionToken', sessionToken);
   axios.post(
-    `http://localhost:5000/api/v1/bible/${translationCode}/${bookName}/${chapterId}/${verseId}/read`,
+    `${process.env.codexifyApiBaseUrl}/api/v1/bible/${translationCode}/${bookName}/${chapterId}/${verseId}/read`,
     {},
     {
       headers: {
@@ -39,6 +39,7 @@ app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token
     }
   ).then(_response => res.send('ok'))
   .catch(error => {
+    console.log('error', error);
     apiErrorHandler(res, error, 'An error occurred on the endpoint')
   });
 });
