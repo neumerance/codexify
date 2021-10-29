@@ -1,11 +1,18 @@
+import { mapGetters } from 'vuex';
+
 export default {
   methods: {
     async read() {
-      const { translationCode, bookName, chapterId, verseId, sessionId } = this.$store.state;
+      const { translationCode, bookName, chapterId, verseId } = this.$store.state;
 
       await this.$axios.get(
-        `/api/read/${translationCode}/${bookName}/${chapterId}/${verseId}/${sessionId}`
+        `/api/read/${translationCode}/${bookName}/${chapterId}/${verseId}/${this.sessionToken}`
       )
-    }
-  }
+    },
+  },
+  computed: {
+    ...mapGetters({
+      sessionToken: 'getSessionToken'
+    })
+  },
 }

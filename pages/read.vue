@@ -15,17 +15,25 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Read',
+  middleware: 'require_session_token',
   data() {
     return {
       data: null
     }
   },
+  computed: {
+    ...mapGetters({
+      sessionToken: 'getSessionToken'
+    })
+  },
   mounted() {
     this.$cable.subscribe({
       channel: 'ApplicationCable::BibleSessionsChannel',
-      session_token: this.$route.params.session_id
+      session_token: this.sessionToken
     });
   },
   channels: {

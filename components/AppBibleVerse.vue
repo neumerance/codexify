@@ -4,7 +4,7 @@
       <span v-if="title" class="verse__header-passage text-white text-7xl mb-4">{{ title }}</span>
       <span v-if="translationName" class="verse__header-bookname text-white text-4xl mb-4">{{ translationName }}</span>
     </div>
-    <p v-if="scripture" class="verse__passage text-white text-4xl">{{ scripture }}</p>
+    <p v-if="scripture" class="verse__passage text-white text-7xl">{{ scripture }}</p>
   </div>
 </template>
 <script>

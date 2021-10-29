@@ -3,12 +3,16 @@ const initialState = () => ({
   bookName: 'Genesis',
   chapterId: 1,
   verseId: 1,
-  sessionId: 11112
+  sessionId: null,
+  sessionToken: null
 });
 
 export const state = initialState;
 
 export const getters = {
+  getSessionToken(state) {
+    return state.sessionToken;
+  }
 };
 
 export const mutations = {
@@ -26,8 +30,24 @@ export const mutations = {
   },
   SET_VERSE_ID(state, verseId) {
     state.verseId = parseInt(verseId);
+  },
+  SET_SESSION_ID(state, sessionId) {
+    state.sessionId = sessionId;
+
+    const token = generateSessionTokenFromSessionId(state.sessionId);
+
+    state.sessionToken = token;
+
+    console.log('state', state);
   }
 };
+
+const generateSessionTokenFromSessionId = (sessionId) => {
+  sessionId = sessionId.replace('-', '');
+  return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
+    return sessionId[p % sessionId.length];
+  });
+}
 
 export const actions = {
 };

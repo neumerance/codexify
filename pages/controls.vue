@@ -8,5 +8,7 @@
 </template>
 <script>
 export default {
+  name: 'Controls',
+  middleware: 'require_session_token'
 }
 </script>

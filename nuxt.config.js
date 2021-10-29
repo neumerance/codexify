@@ -44,4 +44,7 @@ export default {
   },
 
   serverMiddleware: ['~/api/server.js'],
+  server: {
+    host: "0.0.0.0"
+  }
 }

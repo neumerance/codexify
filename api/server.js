@@ -20,21 +20,21 @@ const apiErrorHandler = (res, e, message) => {
   }
 };
 
-app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_id', async (req, res) => {
+app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token', async (req, res) => {
   const {
     translation_code: translationCode,
     book_name: bookName,
     chapter_id: chapterId,
     verse_id: verseId,
-    session_id: sessionId
+    session_token: sessionToken
   } = req.params;
-
+  console.log('sessionToken', sessionToken);
   axios.post(
     `http://localhost:5000/api/v1/bible/${translationCode}/${bookName}/${chapterId}/${verseId}/read`,
     {},
     {
       headers: {
-        'SESSION_ID': sessionId
+        'SESSION_TOKEN': sessionToken
       }
     }
   ).then(_response => res.send('ok'))
