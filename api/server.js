@@ -20,7 +20,11 @@ const apiErrorHandler = (res, e, message) => {
   }
 };
 
-app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token', async (req, res) => {
+app.get('/_ping', (req, res) => {
+  res.send('ok');
+});
+
+app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token', (req, res) => {
   const {
     translation_code: translationCode,
     book_name: bookName,
@@ -28,9 +32,9 @@ app.get('/read/:translation_code/:book_name/:chapter_id/:verse_id/:session_token
     verse_id: verseId,
     session_token: sessionToken
   } = req.params;
-  console.log('sessionToken', sessionToken);
+
   axios.post(
-    `${process.env.codexifyApiBaseUrl}/api/v1/bible/${translationCode}/${bookName}/${chapterId}/${verseId}/read`,
+    `${process.env.CODEXIFY_API_BASE_URL}/api/v1/bible/${translationCode}/${bookName}/${chapterId}/${verseId}/read`,
     {},
     {
       headers: {
