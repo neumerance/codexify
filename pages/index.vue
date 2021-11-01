@@ -1,7 +1,6 @@
 <template>
   <div class="hompage flex justify-center">
-    <div class="h-screen flex flex-col">
-      <h1 class="font-sans text-center text-4xl">Codexify</h1>
+    <div class="homepage__dial-box h-screen flex flex-col">
       <app-session-form>
         <template v-slot:join-session>
           <app-join-session></app-join-session>
@@ -21,3 +20,12 @@ export default {
   name: 'homepage'
 }
 </script>
+<style scoped>
+  .hompage {
+     background: rgb(48,48,48);
+     background: linear-gradient(0deg, rgba(48,48,48,1) 0%, rgba(106,106,107,1) 40%, rgba(106,106,107,1) 76%, rgba(32,30,30,1) 100%);
+  }
+  .homepage__dial-box {
+    justify-content: center;
+  }
+</style>

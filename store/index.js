@@ -12,6 +12,9 @@ export const state = initialState;
 export const getters = {
   getSessionToken(state) {
     return state.sessionToken;
+  },
+  getSessionID(state) {
+    return state.sessionId;
   }
 };
 
@@ -32,13 +35,29 @@ export const mutations = {
     state.verseId = parseInt(verseId);
   },
   SET_SESSION_ID(state, sessionId) {
-    state.sessionId = sessionId;
+    if (sessionId && sessionId.length <= 5) {
+      state.sessionId = sessionId;
 
-    const token = generateSessionTokenFromSessionId(state.sessionId);
+      const token = generateSessionTokenFromSessionId(state.sessionId);
 
-    state.sessionToken = token;
+      state.sessionToken = token;
+    }
+  },
+  DIAL_SESSION_ID(state, number) {
+    const dialedSessionId = `${state.sessionId || ''}${number}`;
 
-    console.log('state', state);
+    if (dialedSessionId.length <= 5) {
+      state.sessionId = dialedSessionId
+      const token = generateSessionTokenFromSessionId(state.sessionId);
+
+      state.sessionToken = token;
+    }
+  },
+  UNDIAL_SESSION_ID(state) {
+    if (state.sessionId && state.sessionId.length >= 1) {
+      const dialedSessionId = state.sessionId.slice(0, -1);
+      state.sessionId = dialedSessionId;
+    }
   }
 };
 
