@@ -8,7 +8,7 @@
         <slot name="create-session"></slot>
       </div>
     </div>
-    <p class="text-center text-xs">
+    <p class="text-center text-white text-xs">
       &copy;2021 MCGI.org. All rights reserved.
     </p>
   </div>
