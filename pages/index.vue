@@ -17,7 +17,8 @@
 import AppSessionForm from "../components/AppSessionForm.vue"
 
 export default {
-  name: 'homepage'
+  name: 'homepage',
+  scrollToTop: true,
 }
 </script>
 <style scoped>

@@ -25,6 +25,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Read',
   middleware: 'require_session_token',
+  scrollToTop: true,
   data() {
     return {
       data: null,

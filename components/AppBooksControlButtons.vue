@@ -1,16 +1,15 @@
 <template>
   <div class="books">
-    <h4 class="text-3xl mb-3 books__title">Books</h4>
-    <div class="flex flex-wrap">
-      <button
-        class="books__buttons mr-2 mb-2"
+    <ul class="list-none">
+      <li
+        class="books__buttons"
         @click="selectBook(book.bookName)"
         :class="stateClasses(book.bookName)"
         :key="`book-${key}`"
         v-for="book, key in books">
-        {{ book.abbr }}
-      </button>
-    </div>
+        {{ book.bookName }}
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -22,15 +21,17 @@ export default {
   mixins: [controlMixin],
   computed: {
     books() {
-      return BookChaptersAndVersesMappings.map(book => ({ abbr: book.abbr, bookName: book.book }))
+      return BookChaptersAndVersesMappings.
+        map(book => ({ abbr: book.abbr, bookName: book.book })).
+        sort((a, b) => { return a.bookName - b.bookName })
     }
   },
   methods: {
     stateClasses(bookName) {
       if (this.$store.state.bookName === bookName) {
-        return 'bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-700 rounded'
+        return 'bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4'
       } else {
-        return 'bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded'
+        return 'bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4'
       }
     },
     selectBook(bookName) {
