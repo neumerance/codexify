@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="read">
     <div v-if="isOnPortraitMode" class="h-screen flex flex-col center">
       <h2 class="text-center">Please landscape your devise orientation</h2>
     </div>
-    <div v-else class="read h-screen w-screen">
-      <div v-if="data && !data.not_found" class="w-full h-full px-8 py-6">
+    <div v-else class="h-screen w-screen">
+      <div v-if="data && !data.not_found" class="read__overlay w-full h-full">
         <app-bible-verse
           :title="data.title"
           :scripture="data.content"
@@ -26,6 +26,14 @@ export default {
   name: 'Read',
   middleware: 'require_session_token',
   scrollToTop: true,
+  head: {
+    meta: [
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0',
+      },
+    ]
+  },
   data() {
     return {
       data: null,
@@ -70,6 +78,9 @@ export default {
   .read {
     background: url('~/assets/images/lush-green.webp');
     background-size: cover;
+  }
+  .read__overlay {
+    padding: calc((75vw - 4.5rem) / 34);
   }
   .center {
     justify-content: center;
