@@ -22,8 +22,7 @@ export default {
   computed: {
     books() {
       return BookChaptersAndVersesMappings.
-        map(book => ({ abbr: book.abbr, bookName: book.book })).
-        sort((a, b) => { return a.bookName - b.bookName })
+        map(book => ({ abbr: book.abbr, bookName: book.book }))
     }
   },
   methods: {

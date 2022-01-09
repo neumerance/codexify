@@ -47,6 +47,6 @@ export default {
   .verses__buttons {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 2px;
   }
 </style>
