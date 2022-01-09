@@ -1,13 +1,15 @@
 <template>
   <div class="translation">
     <ul class="list-none">
-      <li
-        class="translation__buttons rounded-none"
-        :class="stateClasses(translation)"
-        :key="`translation-${key}`"
-        @click="selectTranslation(translation)"
-        v-for="translation, key in translations">
-        {{ translation }}
+      <li>
+        <a
+          href="#" v-scroll-to="'#books'"
+          class="translation__buttons rounded-none block"
+          :class="stateClasses(translation)"
+          :key="`translation-${key}`"
+          @click="selectTranslation(translation)"
+          v-for="translation, key in translations">{{ translation }}
+        </a>
       </li>
     </ul>
   </div>

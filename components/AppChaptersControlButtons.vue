@@ -1,14 +1,14 @@
 <template>
-  <div class="chapters">
+  <div id="chapters" class="chapters">
     <div class="flex flex-wrap">
-      <button
-        class="chapters__buttons m-1"
+      <a href="#" v-scroll-to="'#verses'"
+        class="chapters__buttons m-1 block"
         @click="selectChapter(chapter.chapter)"
         :class="stateClasses(chapter.chapter)"
         :key="`chapter-${key}`"
         v-for="chapter, key in chapters">
         {{ chapter.chapter }}
-      </button>
+      </a>
     </div>
   </div>
 </template>
@@ -43,7 +43,7 @@ export default {
 <style scoped>
   .chapters__buttons {
     width: 60px;
-    height: 60px;
     border-radius: 2px;
+    line-height: 60px;
   }
 </style>

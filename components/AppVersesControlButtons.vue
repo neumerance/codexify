@@ -1,14 +1,14 @@
 <template>
-  <div class="verses">
+  <div id="verses" class="verses">
     <div class="flex flex-wrap">
-      <button
+      <a href="#"
         class="verses__buttons m-1"
         @click="selectVerse(index)"
         :class="stateClasses(index)"
         :key="`verse-${index}`"
         v-for="index in verseCount">
         {{ index }}
-      </button>
+      </a>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
 <style scoped>
   .verses__buttons {
     width: 60px;
-    height: 60px;
+    line-height: 60px;
     border-radius: 2px;
   }
 </style>

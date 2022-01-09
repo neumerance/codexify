@@ -1,13 +1,17 @@
 <template>
-  <div class="books">
+  <div id="books" class="books">
     <ul class="list-none">
-      <li
-        class="books__buttons"
-        @click="selectBook(book.bookName)"
-        :class="stateClasses(book.bookName)"
-        :key="`book-${key}`"
-        v-for="book, key in books">
-        {{ book.bookName }}
+      <li>
+        <a
+          href="#" v-scroll-to="'#chapters'"
+          class="books__buttons block"
+          @click="selectBook(book.bookName)"
+          :class="stateClasses(book.bookName)"
+          :key="`book-${key}`"
+          v-for="book, key in books"
+        >
+          {{ book.bookName }}
+        </a>
       </li>
     </ul>
   </div>
