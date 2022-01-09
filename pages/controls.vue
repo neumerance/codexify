@@ -1,5 +1,12 @@
 <template>
   <div class="controls">
+    <app-bible-verse-mini
+      v-if="data"
+      :title="data.title"
+      :scripture="data.content"
+      :translation-code="data.translation_code"
+    >
+    </app-bible-verse-mini>
     <div class="border-b-2">
       <div class="bg-white">
         <app-translation-control-buttons></app-translation-control-buttons>
@@ -23,41 +30,41 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Controls',
   middleware: 'require_session_token',
-  scrollToTop: true,
-  head: {
-    meta: [
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0',
-      },
-    ]
-  },
   data() {
     return {
-      orientation: 0
+      data: null,
     }
   },
   computed: {
-    isOnPortraitMode() {
-      if (typeof screen.orientation !== 'undefined') {
-        return false;
-      }
-
-      return this.orientation == 0;
-    }
+    ...mapGetters({
+      sessionToken: 'getSessionToken'
+    }),
   },
   mounted() {
+    this.$cable.subscribe({
+      channel: 'ApplicationCable::BibleSessionsChannel',
+      session_token: this.sessionToken
+    });
+
     window.addEventListener("orientationchange", () => {
       this.orientation = window.orientation;
     }, false);
   },
+  channels: {
+    'ApplicationCable::BibleSessionsChannel': {
+      connected() {
+        console.log("I am connected to BibleSessionsChannel.");
+      },
+      received(data) {
+        this.data = data;
+      },
+    },
+  },
 }
 </script>
-<style scoped>
-  .center {
-    justify-content: center;
-  }
-</style>
+

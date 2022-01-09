@@ -1,7 +1,7 @@
 <template>
   <div id="verses" class="verses">
     <div class="flex flex-wrap">
-      <a href="#"
+      <a href="#" v-scroll-to="'#verse'"
         class="verses__buttons m-1"
         @click="selectVerse(index)"
         :class="stateClasses(index)"
